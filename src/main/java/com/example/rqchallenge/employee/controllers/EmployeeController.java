@@ -22,7 +22,7 @@ public class EmployeeController implements IEmployeeController {
 
     @Override
     public ResponseEntity<List<Employee>> getAllEmployees() throws IOException {
-        return null;
+        return employeeService.getAllEmployees();
     }
 
     @Override

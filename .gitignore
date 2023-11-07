@@ -1,6 +1,6 @@
 .gradle
 .build/
-.idea/
+.idea
 *.iws
 *.iml
 *.ipr
@@ -8,3 +8,4 @@ out/
 bin/
 .lock
 /build
+.xml

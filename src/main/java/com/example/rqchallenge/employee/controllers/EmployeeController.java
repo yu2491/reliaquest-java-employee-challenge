@@ -27,7 +27,6 @@ public class EmployeeController implements IEmployeeController {
 
     @Override
     public ResponseEntity<List<Employee>> getEmployeesByNameSearch(String searchString) {
-
         return employeeService.getEmployeesByNameSearch(searchString);
     }
 
@@ -38,7 +37,7 @@ public class EmployeeController implements IEmployeeController {
 
     @Override
     public ResponseEntity<Integer> getHighestSalaryOfEmployees() {
-        return null;
+        return employeeService.getHighestSalaryOfEmployees();
     }
 
     @Override

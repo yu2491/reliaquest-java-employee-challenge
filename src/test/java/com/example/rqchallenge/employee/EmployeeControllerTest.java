@@ -112,5 +112,13 @@ public class EmployeeControllerTest {
         assertNotNull(filteredEmployees);
         assertEquals(0, filteredEmployees.size());
     }
+
+    @Test
+    public void getHighestSalaryOfEmployees_ReturnsValidResponse() {
+        ResponseEntity<Integer> response = employeeController.getHighestSalaryOfEmployees();
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(350000, response.getBody());
+    }
 }
 

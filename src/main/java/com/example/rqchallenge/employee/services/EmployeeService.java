@@ -52,11 +52,28 @@ public class EmployeeService {
         }
     }
 
+    public ResponseEntity<Integer> getHighestSalaryOfEmployees() {
+        var response = getAllEmployees();
+        var highestSalaryOfEmployee = getHighestSalary(response.getBody());
+        return ResponseEntity.status(response.getStatusCode()).body(highestSalaryOfEmployee);
+    }
+
+    private Integer getHighestSalary(List<Employee> allEmployees) {
+        if (allEmployees != null) {
+            return allEmployees.stream()
+                    .map(Employee::getSalary)
+                    .max(Integer::compareTo)
+                    .orElse(0);
+        } else {
+            return null;
+        }
+    }
+
     private static List<Employee> filterEmployeesByNameSearch(String searchString, List<Employee> responseBody) {
         if (responseBody != null) {
-           return responseBody.stream()
-                   .filter(employee -> employee.getName().toLowerCase().contains(searchString.toLowerCase()))
-                   .collect(Collectors.toList());
+            return responseBody.stream()
+                    .filter(employee -> employee.getName().toLowerCase().contains(searchString.toLowerCase()))
+                    .collect(Collectors.toList());
         } else {
             return emptyList();
         }
